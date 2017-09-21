@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Content Switcher</string>
+    <string name="switch_text">Switch Text</string>
+</resources>
