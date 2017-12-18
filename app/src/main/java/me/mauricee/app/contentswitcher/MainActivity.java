@@ -1,17 +1,21 @@
-package me.mauricee.contentswitcher;
+package me.mauricee.app.contentswitcher;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import me.mauricee.contentSwitcher.TextSwitcher;
+import me.mauricee.contentSwitcher.ToolbarTextSwitcher;
 
-public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener,
+        View.OnClickListener {
     private int counter = 0;
-    public final String[] text = {
+
+    private final String[] text = {
             "Text 1",
             "Text 2",
             "Text 3",
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
     SeekBar seekBar;
     TextView switchText;
     TextSwitcher textSwitcher;
+    TextSwitcher toolbarSwitcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +40,26 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
         switchText = findViewById(R.id.switch_text);
 
         textSwitcher = TextSwitcher.with(switchText);
-        textSwitcher.after(ignored -> counter = counter < text.length ? counter + 1 : 0);
 
         seekBar.setMax(1000);
         seekBar.setProgress((int) textSwitcher.getDuration());
 
         seekBar.setOnSeekBarChangeListener(this);
         switchBtn.setOnClickListener(this);
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbarSwitcher = ToolbarTextSwitcher.fromTitle(toolbar);
+        transitionText.setText(getString(R.string.transition_speed, textSwitcher.getDuration()));
+        toolbar.setOnClickListener(this);
+        setSupportActionBar(toolbar);
     }
 
     @Override
-    public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        if (b)
+    public void onProgressChanged(SeekBar seekBar, int i, boolean fromUser) {
+        if (fromUser)
             textSwitcher.duration(i);
-
+        transitionText.setText(getString(R.string.transition_speed, i));
     }
 
     @Override
@@ -63,7 +74,10 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
     @Override
     public void onClick(View view) {
-        textSwitcher.to(text[counter])
-                .switchContent();
+        counter = counter < text.length - 1 ? counter + 1 : 0;
+        if (view.equals(switchBtn))
+            textSwitcher.to(text[counter]).switchContent();
+        else
+            toolbarSwitcher.to(text[counter]).switchContent();
     }
 }

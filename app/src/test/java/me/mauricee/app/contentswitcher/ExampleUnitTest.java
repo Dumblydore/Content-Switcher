@@ -1,4 +1,4 @@
-package me.mauricee.contentswitcher;
+package me.mauricee.app.contentswitcher;
 
 import org.junit.Test;
 

@@ -4,15 +4,6 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 
-
-/**
- * ContentSwitcher was an idea to avoid using ViewSwitcher. calling then is where you would
- * update your view
- * <p>
- * One improvement that would be really nice limiting when the fadeIn animation gets triggered to make
- * smoother animations and improve async interactions.
- * <p>
- */
 public class ContentSwitcher<V extends View> {
 
     private static final AnimationModifier DEFAULT_START_ANIMATOR = animator -> animator.alpha(0f);
@@ -35,26 +26,26 @@ public class ContentSwitcher<V extends View> {
         endAnimation = DEFAULT_END_ANIMATOR;
     }
 
-    public static <V extends View> ContentSwitcher<V> with(V target) {
+    final public static <V extends View> ContentSwitcher<V> with(V target) {
         return new ContentSwitcher<>(target);
     }
 
-    public ContentSwitcher<V> duration(long duration) {
+    final public ContentSwitcher<V> duration(long duration) {
         this.duration = duration;
         return this;
     }
 
-    public ContentSwitcher<V> then(SwitchAction<V> action) {
+    final public ContentSwitcher<V> then(SwitchAction<V> action) {
         this.thenAction = action;
         return this;
     }
 
-    public ContentSwitcher<V> after(SwitchAction<V> action) {
+    final public ContentSwitcher<V> after(SwitchAction<V> action) {
         this.afterAction = action;
         return this;
     }
 
-    public void switchContent() {
+    final public void switchContent() {
         animator.cancel();
         startAnimation.getAnimation(animator)
                 .setDuration(duration)
@@ -62,7 +53,7 @@ public class ContentSwitcher<V extends View> {
                 .start();
     }
 
-    public void cancel() {
+    final public void cancel() {
         animator.cancel();
         onCancel();
     }
@@ -79,7 +70,8 @@ public class ContentSwitcher<V extends View> {
                 .start();
     }
 
-    protected void onSwitch() {}
+    protected void onSwitch() {
+    }
 
     private void doAfter() {
         onAfter();
@@ -95,23 +87,23 @@ public class ContentSwitcher<V extends View> {
 
     }
 
-    public long getDuration() {
+    final public long getDuration() {
         return duration;
     }
 
-    public AnimationModifier getStartAnimation() {
+    final public AnimationModifier getStartAnimation() {
         return startAnimation;
     }
 
-    public void setStartAnimation(AnimationModifier startAnimation) {
+    final public void setStartAnimation(AnimationModifier startAnimation) {
         this.startAnimation = startAnimation;
     }
 
-    public AnimationModifier getEndAnimation() {
+    final public AnimationModifier getEndAnimation() {
         return endAnimation;
     }
 
-    public ContentSwitcher<V> setEndAnimation(AnimationModifier endAnimation) {
+    final public ContentSwitcher<V> setEndAnimation(AnimationModifier endAnimation) {
         this.endAnimation = endAnimation;
         return this;
     }

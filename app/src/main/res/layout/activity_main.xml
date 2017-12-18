@@ -4,7 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="me.mauricee.contentswitcher.MainActivity">
+    tools:context="me.mauricee.app.contentswitcher.MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:titleTextColor="@android:color/white"
+        app:title="@string/app_name"/>
 
     <TextView
         android:id="@+id/switch_text"
@@ -25,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            tools:text="Transition speed: 16ms" />
+            tools:text="@string/transition_speed" />
 
         <SeekBar
             android:id="@+id/seekbar"

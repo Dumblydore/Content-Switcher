@@ -3,9 +3,8 @@ package me.mauricee.contentSwitcher;
 import android.support.annotation.StringRes;
 import android.widget.TextView;
 
-
 /**
- * ContentSwitcher changing text from text views.
+ * Content Switcher for TextViews
  */
 public class TextSwitcher extends ContentSwitcher<TextView> {
 
