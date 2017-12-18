@@ -1,2 +1,4 @@
-# seesaw
-A simple library for animating views changing content
+# Content Switcher
+A simple library to animate views when they change content
+
+TODO Documentation
