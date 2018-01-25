@@ -31,6 +31,6 @@ dependencies {
     implementation rootProject.ext.supportAppCompat
     implementation rootProject.ext.supportAnnotations
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.github.Dumblydore.Content-Switcher:lib:-SNAPSHOT'
-    implementation 'com.github.Dumblydore.Content-Switcher:lib-support-v7:-SNAPSHOT'
+    implementation 'com.github.Dumblydore.Content-Switcher:lib:0.1'
+    implementation 'com.github.Dumblydore.Content-Switcher:lib-support-v7:0.1'
 }
