@@ -3,11 +3,11 @@
 
 A simple library to animate views when they change content
 
-ContentSwitcher
+Core <br>
+```implementation 'com.github.Dumblydore.Content-Switcher:lib:-SNAPSHOT'```
 
-```compile 'com.github.Dumblydore:Content-Switcher:lib-SNAPSHOT'```
+AppCompat-v7 <br>
+```implementation 'com.github.Dumblydore.Content-Switcher:lib-support-v7:-SNAPSHOT'```
 
-ContentSwitcher Appcompat-v7
 
-```compile 'com.github.Dumblydore:Content-Switcher:lib-support-v7-SNAPSHOT'```
 TODO Documentation
