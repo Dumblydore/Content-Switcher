@@ -18,7 +18,7 @@ public class ContentSwitcher<V extends View> {
     private ViewPropertyAnimator animator;
 
 
-    public ContentSwitcher(@NonNull V target) {
+    protected ContentSwitcher(@NonNull V target) {
         this.target = target;
         this.animator = target.animate();
         duration = 250;
