@@ -9,7 +9,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import me.mauricee.contentSwitcher.TextSwitcher;
-import me.mauricee.contentSwitcher.ToolbarTextSwitcher;
+import me.mauricee.contentSwitcher.support.v7.ToolbarSwitcher;
 
 public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener,
         View.OnClickListener {
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements SeekBar.OnSeekBar
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        toolbarSwitcher = ToolbarTextSwitcher.fromTitle(toolbar);
+        toolbarSwitcher = ToolbarSwitcher.switchTitle(toolbar);
         transitionText.setText(getString(R.string.transition_speed, textSwitcher.getDuration()));
         toolbar.setOnClickListener(this);
         setSupportActionBar(toolbar);

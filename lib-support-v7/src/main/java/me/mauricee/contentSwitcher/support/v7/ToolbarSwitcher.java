@@ -1,12 +1,16 @@
-package me.mauricee.contentSwitcher;
+package me.mauricee.contentSwitcher.support.v7;
 
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import me.mauricee.contentSwitcher.TextSwitcher;
+
 import android.widget.TextView;
 
-public class ToolbarTextSwitcher {
 
-    public static TextSwitcher fromTitle(Toolbar toolbar) {
+public class ToolbarSwitcher {
+
+    public static TextSwitcher switchTitle(Toolbar toolbar) {
         TextView toolbarTitle = null;
         CharSequence title = toolbar.getTitle();
         for (int i = 0; i < toolbar.getChildCount(); ++i) {
@@ -22,7 +26,7 @@ public class ToolbarTextSwitcher {
         return TextSwitcher.with(toolbarTitle);
     }
 
-    public static TextSwitcher fromSubtitle(Toolbar toolbar) {
+    public static TextSwitcher switchSubstitle(Toolbar toolbar) {
         TextView toolbarTitle = null;
         CharSequence subtitle = toolbar.getSubtitle();
         for (int i = 0; i < toolbar.getChildCount(); ++i) {
