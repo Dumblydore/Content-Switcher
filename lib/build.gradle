@@ -25,5 +25,4 @@ android {
 
 dependencies {
     implementation supportAnnotations
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }

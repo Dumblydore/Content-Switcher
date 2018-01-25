@@ -1,5 +1,6 @@
 package me.mauricee.contentSwitcher.support.v7;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
@@ -10,7 +11,11 @@ import android.widget.TextView;
 
 public class ToolbarSwitcher {
 
-    public static TextSwitcher switchTitle(Toolbar toolbar) {
+    /**
+     * @return {@link me.mauricee.contentSwitcher.TextSwitcher} with the toolbar's title.
+     * Will throw {@link MissingTitleException} if no title is found.
+     */
+    public static TextSwitcher switchTitle(@NonNull Toolbar toolbar) {
         TextView toolbarTitle = null;
         CharSequence title = toolbar.getTitle();
         for (int i = 0; i < toolbar.getChildCount(); ++i) {
@@ -26,7 +31,11 @@ public class ToolbarSwitcher {
         return TextSwitcher.with(toolbarTitle);
     }
 
-    public static TextSwitcher switchSubstitle(Toolbar toolbar) {
+    /**
+     * @return {@link me.mauricee.contentSwitcher.TextSwitcher} with the toolbar's subtitle.
+     * Will throw {@link MissingSubtitleException} if no subtitle is found.
+     */
+    public static TextSwitcher switchSubstitle(@NonNull Toolbar toolbar) {
         TextView toolbarTitle = null;
         CharSequence subtitle = toolbar.getSubtitle();
         for (int i = 0; i < toolbar.getChildCount(); ++i) {
